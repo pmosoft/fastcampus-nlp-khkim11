@@ -1,0 +1,1 @@
+--model_fn ./model.pth --gpu_id -1 --train_ratio .8 --batch_size 256 --n_epochs 20 --verbose 2 --model cnn
