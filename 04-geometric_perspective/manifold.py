@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,'D:/lge/pycharm-projects/Fastcampus-NLP11/04-geometric_perspective/')
+sys.path.insert(0,'D:/lge/pycharm-projects/fastcampus-nlp-khkim11/04-geometric_perspective/')
 
 # %%
 import numpy as np
@@ -71,7 +71,7 @@ trainer = Trainer(model, optimizer, crit)
 # %%
 #trainer.train((train_x, train_x), (valid_x, valid_x), config)
 
-model.load_state_dict(torch.load('d:/lge/pycharm-projects/Fastcampus-NLP11/02-representation_learning/autoencoder.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load('d:/lge/pycharm-projects/fastcampus-nlp-khkim11/02-representation_learning/autoencoder.pth', map_location=torch.device('cpu')))
 model.eval()
 
 # %% md

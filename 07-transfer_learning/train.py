@@ -63,5 +63,24 @@ def main(config):
 
 
 if __name__ == '__main__':
-    config = define_argparser()
+    #config = define_argparser()
+    from argparse import Namespace
+    config = {
+          'model_fn'      : './model.pth'
+        , 'gpu_id'        : -1
+        , 'train_ratio'   : .6
+        , 'valid_ratio'   : .2
+        , 'test_ratio'    : .2
+        , 'batch_size'    : 256
+        , 'n_epochs'      : 10
+        , 'verbose'       : 2
+        , 'model_name'    : 'densenet' # 'squeezenet' 'vgg' 'alexnet' 'resnet'
+        , 'dataset_name'  : 'catdog'
+        , 'n_classes'     : 2
+        , 'freeze'        : True
+        , 'use_pretrained': True # False
+    }
+    config = Namespace(**config)
+    print(config)
+
     main(config)

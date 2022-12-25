@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,'D:/lge/pycharm-projects/Fastcampus-NLP11/02-representation_learning/')
+sys.path.insert(0, 'D:/lge/pycharm-projects/fastcampus-nlp-khkim11/02-representation_learning/')
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
@@ -71,9 +71,9 @@ crit = nn.MSELoss()
 trainer = Trainer(model, optimizer, crit)
 # %%
 # trainer.train((train_x, train_x), (valid_x, valid_x), config)
-# torch.save(trainer.model.state_dict(), 'd:/lge/pycharm-projects/Fastcampus-NLP11/02-representation_learning/autoencoder.pth')
+# torch.save(trainer.model.state_dict(), 'd:/lge/pycharm-projects/fastcampus-nlp-khkim11/02-representation_learning/autoencoder.pth')
 
-model.load_state_dict(torch.load('d:/lge/pycharm-projects/Fastcampus-NLP11/02-representation_learning/autoencoder.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load('d:/lge/pycharm-projects/fastcampus-nlp-khkim11/02-representation_learning/autoencoder.pth', map_location=torch.device('cpu')))
 model.eval()
 # %%
 ## Test

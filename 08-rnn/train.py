@@ -11,6 +11,7 @@ from mnist_classification.models.fc_model import FullyConnectedClassifier
 from mnist_classification.models.cnn_model import ConvolutionalClassifier
 from mnist_classification.models.rnn_model import SequenceClassifier
 
+
 def define_argparser():
     p = argparse.ArgumentParser()
 
@@ -38,16 +39,16 @@ def define_argparser():
 
 def get_model(config):
     if config.model == 'fc':
-        model = FullyConnectedClassifier(28**2, 10)
+        model = FullyConnectedClassifier(28 ** 2, 10)
     elif config.model == 'cnn':
         model = ConvolutionalClassifier(10)
     elif config.model == 'rnn':
         model = SequenceClassifier(
-            input_size = 28,
-            hidden_size = config.hidden_size,
-            output_size = 10,
-            n_layers = config.n_layers,
-            dropout_p = config.dropout_p,
+            input_size=28,
+            hidden_size=config.hidden_size,
+            output_size=10,
+            n_layers=config.n_layers,
+            dropout_p=config.dropout_p,
         )
     else:
         raise NotImplementedError('You need to specify model name.')
@@ -77,6 +78,30 @@ def main(config):
     trainer = Trainer(config)
     trainer.train(model, crit, optimizer, train_loader, valid_loader)
 
+
 if __name__ == '__main__':
-    config = define_argparser()
-    main(config)
+    # config = define_argparser()
+    from argparse import Namespace
+
+    config = {
+        'model_fn': './model.pth'
+        , 'gpu_id': -1
+        , 'train_ratio': .8
+        , 'batch_size': 256
+        , 'n_epochs': 20
+        , 'verbose': 2
+        , 'model': 'rnn'
+        , 'hidden_size': 64
+        , 'n_layers': 4
+        , 'dropout_p': .2
+        , 'max_grad': -1
+    }
+    config = Namespace(**config)
+    print(config)
+    # main(config)
+
+    import torch.nn as nn
+
+    m = nn.LeakyReLU(0.1)
+    input = torch.randn(2)
+    output = m(input)

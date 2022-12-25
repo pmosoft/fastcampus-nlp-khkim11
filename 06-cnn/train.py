@@ -63,5 +63,18 @@ def main(config):
     trainer.train(model, crit, optimizer, train_loader, valid_loader)
 
 if __name__ == '__main__':
-    config = define_argparser()
+    # config = define_argparser()
+    from argparse import Namespace
+
+    config = {
+          'gpu_id': -1
+        , 'train_ratio': .8
+        , 'batch_size': 256
+        , 'n_epochs': 20
+        , 'verbose': 2
+        , 'model': 'cnn' # 'fc'
+    }
+
+    config = Namespace(**config)
+    print(config)
     main(config)

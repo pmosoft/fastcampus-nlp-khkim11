@@ -8,6 +8,7 @@ from model import ImageClassifier
 from trainer import Trainer
 from utils import load_mnist
 
+
 def define_argparser():
     p = argparse.ArgumentParser()
 
@@ -52,7 +53,7 @@ def main(config):
     print("Train:", x[0].shape, y[0].shape)
     print("Valid:", x[1].shape, y[1].shape)
 
-    model = ImageClassifier(28**2, 10).to(device)
+    model = ImageClassifier(28 ** 2, 10).to(device)
     optimizer = optim.Adam(model.parameters())
     crit = nn.NLLLoss()
 
@@ -66,6 +67,18 @@ def main(config):
         'config': config,
     }, config.model_fn)
 
+
 if __name__ == '__main__':
-    config = define_argparser()
+    # config = define_argparser()
+    from argparse import Namespace
+
+    config = {
+          'gpu_id': -1
+        , 'train_ratio': .8
+        , 'batch_size': 64
+        , 'n_epochs': 20
+        , 'verbose': 2
+    }
+    config = Namespace(**config)
+    print(config)
     main(config)

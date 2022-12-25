@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,'D:/lge/pycharm-projects/Fastcampus-NLP11/01-orientation/')
+sys.path.insert(0,'D:/lge/pycharm-projects/fastcampus-nlp-khkim11/01-orientation/')
 
 # %% md
 # Practical Exercise with MNIST Example
@@ -67,7 +67,7 @@ x, y = x.to(device), y.to(device)
 
 model = ImageClassifier(28 ** 2, 10).to(device)
 #model.load_state_dict(load(model_fn, device))
-model.load_state_dict(load('d:/lge/pycharm-projects/Fastcampus-NLP11/01-orientation/mode.pth', device))
+model.load_state_dict(load('d:/lge/pycharm-projects/fastcampus-nlp-khkim11/01-orientation/mode.pth', device))
 # %%
 test(model, x[:20], y[:20], to_be_shown=True)
 # %%
